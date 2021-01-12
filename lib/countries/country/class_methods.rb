@@ -96,7 +96,8 @@ module ISO3166
 
     def create_subdivisions(subdivision_data)
       subdivision_data.each_with_object({}) do |(k, v), hash|
-        hash[k] = Subdivision.new(v)
+        data = { code: k.to_s }.merge v
+        hash[k] = Subdivision.new(data)
       end
     end
 
